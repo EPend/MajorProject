@@ -1,0 +1,52 @@
+COPPELIA SCRIPT INFORMATION:
+
+	Script uses a non-threaded format, with a sysCall_init, sysCall_cleanup and sysCall_actuation.
+	non-threaded scripts use blocking functions (if you halt in a function you'll halt the sim)
+	sysCall_init and cleanup are both called respectfully at the start and end of the simulation.
+	sysCall_actuation is called every step of the simulation after init and before cleanup (can be changed by
+	but default is 5ms)
+
+ACM-R5H SCRIPT INFORMATION:
+
+Main head link script:
+
+Init:
+	The init portion can be split into 3 stages, definitions for the module count and interModuleDelay which are
+	used to create a vertical and horizontal movement table for propegating the head links motion to the other
+	respondable nodes.
+
+	The next section is just handle definitions to control the robot (v/h joints, body and prox sensor for use
+	in the actuation function)
+
+	The final section is used for variable definitions, which are used for randomising the angle the robot
+	is facing, calculating friction, changing motion control types (phases for horizontal and both horizontal & vertical),
+	proximity variables and a max possible angle the robot can take when calculating a randomised angle.
+	
+actuation:
+	The actuation portion is split up into 5 stages, the first which takes the simulation time as a variable in calculating
+	the vpos for motion (hpos is 0 until we detect that we're able to move in a 3d space), later on the script clater on the script calls 
+	sim.setJointTargetPosition on the v/h joints to actually move the robot
+
+	The second section calculates friction on the robot for both the gravity and speed the robot is moving then applies that using addForceAndTorque (this can be duplicated and modified to also calculate hydrodynamics of the robot)
+
+	The third section is used for checking if the links Z axis is less than 0.02 with some phase transition validation and will randomise the hPos in a similar way if these conditions are met
+
+	SENSING SECTION
+
+	The last section clears the existing movement in the movement table and inserts the current v/h pos for each responsable link to follow, this is done by sim.sendData on packed float/int tables to transfer the data between the head
+	and the respondable links
+
+Respondable link script:
+
+init:
+
+	Essentially the same as the original head script
+
+actuation:
+
+	Since most of the work has been done in the head link, the respondables copy have only 2 major sections.
+
+	The first being the same friction calculation the head shares as this would also need to be applied to every subsequent link as their linear, angular velocity and direction would differ from the main link
+
+	the last section just takes the packed up data sent by the main link and runs another setJoinTargetPosition with its interModuleDelay and modulePosition affecting which index it looks at, essentially staggering the movement so it moves in a snake-like manner
+
