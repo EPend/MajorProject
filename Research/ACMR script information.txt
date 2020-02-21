@@ -31,7 +31,9 @@ actuation:
 
 	The third section is used for checking if the links Z axis is less than 0.02 with some phase transition validation and will randomise the hPos in a similar way if these conditions are met
 
-	SENSING SECTION
+	The fourth section is used for sensing, this section can be split up into 2 main portions, the first checks if the proximity sensor detects anything, which will set the proxCounter to 27 and set the v/hdir variables to an angle that would effectively turn the robot away from the obstacle, inverting the angle if v/hpos are negative respectfully.
+	
+	the second portion in this section is used to tweak the v/hpos based on the amount of simulation ticks has passed since detecting an obstacle, this is to prevent the snake from bumping into itself or the object.
 
 	The last section clears the existing movement in the movement table and inserts the current v/h pos for each responsable link to follow, this is done by sim.sendData on packed float/int tables to transfer the data between the head
 	and the respondable links
