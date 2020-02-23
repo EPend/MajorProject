@@ -115,4 +115,47 @@ sim.sendData(sim.handle_tree,0,'ACMR_str',sim.packFloatTable({str}))
  ### sysCall_cleanup
  The original cleanup script didn't initially contain any clean up code, however I had to add some code to remove the camera and console at the end of the simulation.
 ## Respondable script
+Each respondable links goal is to follow the head links motion with a delay, with some additional friction and gravity calculations similarly how the main head does.
+### sysCall_init
+The init functions of the respondables are a lot more bare-bones than the main link, setting up the relevant object handles with the only main variation being the modulePos which is used to find out which index of the motion table to access.
+```lua
+modulePos=1
+```
+### sysCall_actuation
+The actuation function of the respondables can be split up into 3 sections, the first section takes all of the packed data from the head link and stores it into variables to be used for actuating and calculating friction/gravitational forces.
+```lua
+data=sim.receiveData(0,'ACMR_vmt')
+verticalMovementTable=sim.unpackFloatTable(data)
+data=sim.receiveData(0,'ACMR_hmt')
+horizontalMovementTable=sim.unpackFloatTable(data)
+data=sim.receiveData(0,'ACMR_imd')
+interModuleDelay=sim.unpackInt32Table(data)[1]
+data=sim.receiveData(0,'ACMR_str')
+```
+The second section takes the str from the main link (not entirely sure why since it's static -20) and calculates the same gravitation and friction forces as the main link.
+```lua
+str=sim.unpackFloatTable(data)[1]
+p=sim.getObjectPosition(bodyS,-1)
+cm=(0.05-p[3])/0.05
+if (cm>1.05) then cm=1.05 end
+if (cm<0) then cm=0 end
+sim.addForceAndTorque(body,{0,0,9.81*cm})
 
+linV,angV=sim.getVelocity(body)
+m=sim.getObjectMatrix(bodyS,-1)
+m[4]=0
+m[8]=0
+m[12]=0
+mi=simGetInvertedMatrix(m)
+linV=sim.multiplyVector(mi,linV)
+linV[1]=0
+linV=sim.multiplyVector(m,linV)
+f={linV[1]*mass*str*cm,linV[2]*mass*str*cm,linV[3]*mass*str*cm}
+sim.addForceAndTorque(body,f)
+```
+The final section takes the accesses the specific modules index and delay in the table to get it's horizontal and vertical motion, since the calculations are already done in the main link this section is really simple.
+```lua
+sim.setJointTargetPosition(vJoint,verticalMovementTable[modulePos*interModuleDelay])
+sim.setJointTargetPosition(hJoint,horizontalMovementTable[modulePos*interModuleDelay])
+```
+# Modifying the script
