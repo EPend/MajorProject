@@ -158,4 +158,3 @@ The final section takes the accesses the specific modules index and delay in the
 sim.setJointTargetPosition(vJoint,verticalMovementTable[modulePos*interModuleDelay])
 sim.setJointTargetPosition(hJoint,horizontalMovementTable[modulePos*interModuleDelay])
 ```
-# Modifying the script
