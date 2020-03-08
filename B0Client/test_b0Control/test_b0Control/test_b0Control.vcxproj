@@ -130,9 +130,7 @@
     <ClCompile Include="testClient.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\..\Program Files\CoppeliaRobotics\CoppeliaSimEdu\programming\b0RemoteApiBindings\cpp\b0RemoteApi.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\Program Files\CoppeliaRobotics\CoppeliaSimEdu\programming\b0RemoteApiBindings\cpp\b0RemoteApi.h" />
     <ClInclude Include="ErrCode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
