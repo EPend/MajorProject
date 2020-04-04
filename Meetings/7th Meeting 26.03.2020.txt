@@ -1,0 +1,16 @@
+What was discussed:
+	How did the major project go
+	Wall following and other developments
+	Moving each link individually
+	Having a "moving link" in the middle"
+	Compliance for moving each link with sensors
+	2 "modes" of actuation
+What was accomplished:
+	Basic implementation of wall following
+	change of how goal navigation works
+Actions needed to be taken: 
+	each module have it's own "brain"
+	Moving each link individually
+	Having a "moving link" in the middle"
+	improved wall following
+	improved wall-leaving and go towards goal

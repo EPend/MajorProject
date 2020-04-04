@@ -1,0 +1,10 @@
+What was discussed:
+	Focus on Coppelia and how everything works in that simulator
+	ACM-R5 robot available so see what that gives me
+What as accomplished:
+	Project outline completed
+	Concluded you cannot import models
+	Coudln't figure out how Coppelia simulated underwater environments
+Actions needed to be taken: 
+	Figure out how to control the ACM-R5 robot in Coppelia
+	Explore how Coppelia manages scenes, scripts etc

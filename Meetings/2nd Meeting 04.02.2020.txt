@@ -1,0 +1,11 @@
+What was discussed:
+	Project outline
+	Different simulators that provide underwater environments (Coppelia and UWSim)
+	Coppelia snake demo
+	If the snake model can be ported between Coppelia and UWSim
+What as accomplished:
+	Explored multiple simulators to find which ones were suitable
+Actions needed to be taken: 
+	Discover how Coppelia was able to achieve the underwater snake demo
+	Figure out how to import models between the simulators if it's possible
+	Complete project outline

@@ -1,0 +1,15 @@
+What was discussed:
+	Poster work
+	Motion planning methods (How the eel/oscellation works and what the benefits are)
+	"mock" demo next week
+	Path-planning algorithm (work backwards from the working implementation)
+What as accomplished:
+	Created a tutorial for the ACM-R5 robot
+	Implemented a conservative algorithm for planning
+	Updated repo with current work
+	Goal navigation was also achieved in a non-standard format
+Actions needed to be taken: 
+	Keep working on motion planning methods, focus on eel
+	"mock" demo next week preperation (videos etc)
+	Poster work
+	Work on getting the path-planning algorithm working
