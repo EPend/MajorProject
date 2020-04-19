@@ -1,0 +1,12 @@
+What was discussed:
+	Project outline
+	What type of robot was I going to use
+	What simulators would be good in different scenarios
+	Snake-like robot, ideally can traverse both on land and water
+	V-rep was suggested, and to explore other simulators especially how they simulate water
+What as accomplished:
+	~
+Actions needed to be taken: 
+	Research which simulators can be used, and which ones are better for each environment
+	Find or create a robot in the suitable simulator
+	

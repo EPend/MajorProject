@@ -1,0 +1,13 @@
+What was discussed:
+	How the ACM-R5 robot works and what it gives you
+	How Coppelia achieved their "water-like" scene
+	Creating a small motion planning algorithm to conservatively navigate towards a goal
+What as accomplished:
+	Created a testing scene
+	Explored how scripts were written in Coppelia
+	Learnt about B0-resolver and how to write C++ scripts for Coppelia
+	Somewhat learnt how the control scripts for ACM-R5 robot works
+Actions needed to be taken: 
+	Create a tutorial for understanding the control script
+	Implement a conservative motion planning algorithm
+	Explore oscillating motion and other control methods for the ACM-R5 robot

@@ -1,0 +1,11 @@
+What was discussed:
+	Focus on motion planning algorithms
+	Getting things ready for the real mid-project demo, things to prioritise
+What as accomplished:
+	Poster completed
+	Mock-demo perpared with slides
+	Path-planning precursor work
+Actions needed to be taken: 
+	Add more code in demo
+	Talk about more of the technical research based stuff i've done (resolver, scripts etc)
+	Explore a better solution for eel motion
