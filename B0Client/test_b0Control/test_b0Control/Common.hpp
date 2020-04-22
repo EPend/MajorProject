@@ -1,5 +1,7 @@
 #pragma once
 
+#define LOGURU_DEBUG_LOGGING 0
+
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -7,7 +9,13 @@
 #include <chrono>
 #include "loguru.hpp"
 #include <thread>
+
+#pragma warning ( push )
+#pragma warning ( disable: 4100 )
+#pragma warning ( disable: 4456 )
 #include "b0RemoteApi.h"
+#pragma warning ( pop )
+
 
 enum LINK_TYPE {
 	HEAD_LINK = 0,
@@ -39,3 +47,4 @@ enum CURRENT_WALL {
 
 #define SNAKE_MASS 1.1
 #define STR -20
+

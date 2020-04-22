@@ -16,28 +16,31 @@
     <Filter Include="Header Files\API">
       <UniqueIdentifier>{019f9ed8-d667-46b9-9a47-849c38c03417}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\API">
-      <UniqueIdentifier>{8b7db202-8b0e-4385-93ad-4d6d1b07369c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Common">
       <UniqueIdentifier>{ec9caa9d-5513-4d08-899b-13214827985e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Logging">
       <UniqueIdentifier>{2c2311db-14b5-4fbb-b65c-6926b4a18fc7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\API">
+      <UniqueIdentifier>{3f964dc4-520a-47c8-9e76-6dbc335c9730}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="testClient.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\..\Program Files\CoppeliaRobotics\CoppeliaSimEdu\programming\b0RemoteApiBindings\cpp\b0RemoteApi.cpp">
-      <Filter>Source Files\API</Filter>
     </ClCompile>
     <ClCompile Include="loguru.cpp">
       <Filter>Header Files\Logging</Filter>
     </ClCompile>
     <ClCompile Include="HeadLink.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RespondableLink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Program Files\CoppeliaRobotics\CoppeliaSimEdu\programming\b0RemoteApiBindings\cpp\b0RemoteApi.cpp">
+      <Filter>Source Files\API</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +57,9 @@
       <Filter>Header Files\Logging</Filter>
     </ClInclude>
     <ClInclude Include="HeadLink.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RespondableLink.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

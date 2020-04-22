@@ -4,8 +4,11 @@
 #include "ErrCode.h"
 #include "Common.hpp"
 #include "HeadLink.h"
+#include "RespondableLink.h"
 
 Head_Link * head = nullptr;
+Respondable_Link * link = nullptr;
+
 b0RemoteApi* cl = nullptr;
 static float simTime = 0.0f;
 static int sensorTrigger = 0;
@@ -19,7 +22,7 @@ int main(int argc, char* argv[])
 	loguru::init(argc, argv);
 
 	// Put every log message in "everything.log":
-	loguru::add_file("everything.log", loguru::Append , loguru::Verbosity_MAX);
+	//loguru::add_file("everything.log", loguru::Append , loguru::Verbosity_ERROR);
 
 	int vJoint, hJoint, body, bodyS, prox, leftSensor, rightSensor, visionSensor;
 	Sleep(2000);
@@ -41,7 +44,6 @@ int main(int argc, char* argv[])
 			visionSensor = atoi(argv[9]);
 
 			LOG_F(INFO, "Successfully initialized!");
-
 			head = new Head_Link(cl);
 			head->setJointHandles({ vJoint, hJoint, body, bodyS });
 			head->setSensorHandles({ prox, leftSensor, rightSensor, visionSensor });
@@ -50,13 +52,29 @@ int main(int argc, char* argv[])
 		}
 		else
 		{
-			/*
-			string clientName = "b0RemoteApi_Respondable_Client_" + to_string(atoi(argv[2]));
-			b0RemoteApi client(clientName.c_str(), "b0RemoteApi");
-			cl = &client;
-			*/
-			LOG_F(ERROR, "Parameter error!");
-			return(ERROR_CODE::PARAM_ERR);
+			if (argc == 7)
+			{
+				string clientName = "b0RemoteApi_Respondable_Client_" + to_string(atoi(argv[2]));
+				b0RemoteApi client(clientName.c_str(), "b0RemoteApi");
+				cl = &client;
+				
+				vJoint = atoi(argv[3]);
+				hJoint = atoi(argv[4]);
+				body = atoi(argv[5]);
+				bodyS = atoi(argv[6]);
+
+				LOG_F(INFO, "Successfully initialized!");
+
+				link = new Respondable_Link(cl, atoi(argv[2]));
+				link->setJointHandles({ vJoint, hJoint, body, bodyS });
+				link->start();
+
+			}
+			else
+			{
+				LOG_F(ERROR, "Parameter error!");
+				return(ERROR_CODE::PARAM_ERR);
+			}
 		}
 	}
 

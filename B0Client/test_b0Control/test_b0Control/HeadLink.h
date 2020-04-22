@@ -23,33 +23,42 @@ private:
 
 	float m_FrontDistance = 0.0;
 
-	enum m_OscPhase {
+	enum m_eOscPhase {
 		LEFT = 0, 
 		RIGHT = 1
 	};
 
-	double m_Oscillation = 0.0;
-	double m_TurnSpeed = 0.0;
+	m_eOscPhase m_CurrentOscPhase = m_eOscPhase::LEFT;
+
+	MOVE_MODE m_MoveMode = MOVE_MODE::REGULAR_MOVE;
+
+	float m_vOscillation = 0.0;
+	float m_vTurnSpeed = 0.0;
+	float m_hOscillation = 0.0;
+	float m_hTurnSpeed = 0.0;
 	int m_TurnCounter = 0;
 
 	std::vector<double> m_OscRange = { 0.6, -0.6 };
-	double m_DefaultOscStep = 0.1;
+	float m_DefaultOscStep = 0.1F;
 
-	double m_VelocityX = 0.0;
-	double m_VelocityY = 0.0;
-
-	bool m_Slow = true;
+	float m_VelocityX = 0.0;
+	float m_VelocityY = 0.0;
 
 	CURRENT_WALL m_CurrentWall = CURRENT_WALL::NONE;
 
-	double m_DWDistanceThreshold = 0.025;
-	double m_DWMaxOscRate = 0.2;
-	double m_DWPanicThreshold = 0.05;
+	float m_DWDistanceThreshold = 0.025F;
+	float m_DWMaxOscRate = 0.2F;
+	float m_DWPanicThreshold = 0.05F;
+
+	void CalculateMotion();
+	void ExecuteMoveAndPublish();
 
 	void FrontSensorCB(std::vector<msgpack::object>*);
 	void LeftSensorCB(std::vector<msgpack::object>*);
 	void RightSensorCB(std::vector<msgpack::object>*);
 	void VelocityCB(std::vector<msgpack::object>*);
+
+	const char * m_ClientPublisher = nullptr;
 
 public:
 	Head_Link(b0RemoteApi *);
