@@ -1,0 +1,9 @@
+What was discussed:
+	Implementation of distributed control obstacle following
+	Vision sensing
+	Getting a good base in terms of avoidance and following
+	U shaped path along water and land
+What was accomplished:
+	Implementation of distributed control obstacle following
+Actions needed to be taken: 
+	Change current step based implementation to a more dynamic one
