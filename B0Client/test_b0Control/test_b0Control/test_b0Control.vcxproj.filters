@@ -13,20 +13,53 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\API">
+      <UniqueIdentifier>{019f9ed8-d667-46b9-9a47-849c38c03417}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Common">
+      <UniqueIdentifier>{ec9caa9d-5513-4d08-899b-13214827985e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Logging">
+      <UniqueIdentifier>{2c2311db-14b5-4fbb-b65c-6926b4a18fc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\API">
+      <UniqueIdentifier>{3f964dc4-520a-47c8-9e76-6dbc335c9730}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="testClient.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\Program Files\CoppeliaRobotics\CoppeliaSimEdu\programming\b0RemoteApiBindings\cpp\b0RemoteApi.cpp">
+    <ClCompile Include="loguru.cpp">
+      <Filter>Header Files\Logging</Filter>
+    </ClCompile>
+    <ClCompile Include="HeadLink.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RespondableLink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Program Files\CoppeliaRobotics\CoppeliaSimEdu\programming\b0RemoteApiBindings\cpp\b0RemoteApi.cpp">
+      <Filter>Source Files\API</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\..\Program Files\CoppeliaRobotics\CoppeliaSimEdu\programming\b0RemoteApiBindings\cpp\b0RemoteApi.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\..\..\..\..\..\..\Program Files\CoppeliaRobotics\CoppeliaSimEdu\programming\b0RemoteApiBindings\cpp\b0RemoteApi.h">
+      <Filter>Header Files\API</Filter>
     </ClInclude>
     <ClInclude Include="ErrCode.h">
+      <Filter>Header Files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common.hpp">
+      <Filter>Header Files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="loguru.hpp">
+      <Filter>Header Files\Logging</Filter>
+    </ClInclude>
+    <ClInclude Include="HeadLink.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RespondableLink.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
